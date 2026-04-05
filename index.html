@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="国立駅徒歩3秒。こだわりの焙煎豆で
+    淹れた極上のコーヒーとぬこで最高の癒しをご提供します。Wi-Fi・コンセント完備">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>ぬこカフェ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>NUKO-Cafe</h1>
+    </header>
+
+
+    <nav class="nav">
+        <a href="index.html">ホーム</a>
+        <a href="menu.html">メニュー</a>
+        <a href="access.html">アクセス</a>
+        <a href="info.html">店主紹介</a>
+    </nav>
+
+    <div class="slider-wrapper">
+        <div class="slider">
+
+            <div class="slides">
+                <img src="img/nukocafe.png" class="active">
+
+                <img src="img/barista.png">
+
+                <img src="img/woman.png">
+
+            </div>
+
+            <!-- ボタン -->
+            <button class="prev">◀</button>
+            <button class="next">▶</button>
+
+        </div>
+    </div>
+
+    <p class="text">今月のおすすめ</p>
+
+    <div class="favorite">
+
+        <div class="item">
+            <img src="img/coffee.png">
+            <h2>コーヒー</h2>
+            <p>400円</p>
+        </div>
+
+        <div class="item">
+            <img src="img/coffeelate.png">
+            <h2>カフェラテ</h2>
+            <p>500円</p>
+        </div>
+
+        <div class="item">
+            <img src="img/shortcake.png">
+            <h2>ショートケーキ</h2>
+            <p>600円</p>
+        </div>
+
+        <div class="item">
+            <img src="img/cheezecake.png" alt="">
+            <h2>チーズケーキ</h2>
+            <p>650円</p>
+        </div>
+
+    </div>
+
+    <section class="news">
+        <h2>最近の更新</h2>
+
+        <ul>
+            <li><span class="new">NEW</span> 2026/03/16 春限定チーズケーキ追加</li>
+            <li>2026/03/10　ショートケーキを追加しました</li>
+            <li>2026/03/05　新しいコーヒー豆が入荷しました</li>
+            <li>2026/03/01　サイトを公開しました</li>
+        </ul>
+
+    </section>
+
+    <footer>
+        <p>© 2026 ぬこカフェ</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll(".slides img");
+        const prev = document.querySelector(".prev");
+        const next = document.querySelector(".next");
+        const slider = document.querySelector(".slider");
+
+        let current = 0;
+        let interval;
+
+        // 表示切り替え
+        function showSlide(index) {
+            slides.forEach(img => img.classList.remove("active"));
+            slides[index].classList.add("active");
+        }
+
+        // 次へ
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
+
+        // 前へ
+        function prevSlide() {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        }
+
+        // 自動再生
+        function startSlide() {
+            interval = setInterval(nextSlide, 5000);
+        }
+
+        // 停止
+        function stopSlide() {
+            clearInterval(interval);
+        }
+
+        // ボタン操作
+        next.addEventListener("click", nextSlide);
+        prev.addEventListener("click", prevSlide);
+
+        // ホバーで停止
+        slider.addEventListener("mouseenter", stopSlide);
+        slider.addEventListener("mouseleave", startSlide);
+
+        // 初期スタート
+        startSlide();
+    </script>
+
+</body>
+
+</html>
