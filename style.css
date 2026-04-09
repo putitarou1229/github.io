@@ -1,8 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #f1b36c;
   font-family: sans-serif;
   text-align: center;
   margin: 0;
+  overflow-x: hidden;
 }
 
 .nav a {
@@ -376,6 +381,51 @@ button {
   font-style: italic;
 }
 
+.news {
+  padding: 40px 16px;
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-list li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 日付 */
+.date {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: #888;
+}
+
+/* テキスト */
+.text {
+  flex: 1;
+  word-break: break-word;
+  font-size: medium;
+}
+
+.news,
+.news-list li {
+  max-width: 100%;
+}
+
+.news h2 {
+  margin-bottom: 20px;
+}
+
+.news-list li:hover {
+  background: #8ec8e9;
+}
+
+
 /* スマホ対応 */
 @media (max-width: 768px) {
   .menu-grid {
@@ -407,4 +457,40 @@ button {
   img {
     border-radius: 8px;
   }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  h1 {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+
+  .nav a {
+    font-size: clamp(12px, 3.5vw, 16px);
+    padding: 8px 10px;
+  }
+
+  h1,
+  h2,
+  .nav a {
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  .news-list li {
+    flex-direction: column;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
 }
